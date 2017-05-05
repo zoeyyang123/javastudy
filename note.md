@@ -37,6 +37,86 @@ import org.junit.After;
 import org.junit.Test;
 ```
 
+@Before：初始化方法   对于每一个测试方法都要执行一次（注意与BeforeClass区别，后者是对于所有方法执行一次）
+@After：释放资源  对于每一个测试方法都要执行一次（注意与AfterClass区别，后者是对于所有方法执行一次）
+@Test：测试方法，在这里可以测试期望异常和超时时间 
+@Test(expected=ArithmeticException.class)检查被测方法是否抛出ArithmeticException异常 
+@Ignore：忽略的测试方法 
+@BeforeClass：针对所有测试，只执行一次，且必须为static void 
+@AfterClass：针对所有测试，只执行一次，且必须为static void 
+一个JUnit4的单元测试用例执行顺序为： 
+@BeforeClass -> @Before -> @Test -> @After -> @AfterClass; 
+每一个测试方法的调用顺序为： 
+
+@Before -> @Test -> @After; 
+
+```JavaScript
+public class JUnit4Test {     
+    @Before    
+    public void before() {     
+        System.out.println("@Before");     
+    }     
+      
+    @Test    
+         /**   
+          *Mark your test cases with @Test annotations.    
+          *You don’t need to prefix your test cases with “test”.   
+          *tested class does not need to extend from “TestCase” class.   
+          */    
+    public void test() {     
+        System.out.println("@Test");     
+        assertEquals(5 + 5, 10);     
+    }     
+      
+    @Ignore    
+    @Test    
+    public void testIgnore() {     
+        System.out.println("@Ignore");     
+    }     
+      
+    @Test(timeout = 50)     
+    public void testTimeout() {     
+        System.out.println("@Test(timeout = 50)");     
+        assertEquals(5 + 5, 10);     
+    }     
+      
+    @Test(expected = ArithmeticException.class)     
+    public void testExpected() {     
+        System.out.println("@Test(expected = Exception.class)");     
+        throw new ArithmeticException();     
+    }     
+      
+    @After    
+    public void after() {     
+        System.out.println("@After");     
+    }     
+      
+    @BeforeClass    
+    public static void beforeClass() {     
+        System.out.println("@BeforeClass");     
+    };     
+      
+    @AfterClass    
+    public static void afterClass() {     
+        System.out.println("@AfterClass");     
+    };     
+};
+```
+
+>输出结果：
+>
+>@BeforeClass 
+>@Before 
+>@Test(timeout = 50) 
+>@After 
+>@Before 
+>@Test(expected = Exception.class) 
+>@After 
+>@Before 
+>@Test 
+>@After 
+>@AfterClass 
+
 - **shiro**
 
 1.登录
@@ -53,4 +133,16 @@ subject.logout();
 ```
 
 > 如果身份验证失败请捕获AuthenticationException或其子类，常见的如： DisabledAccountException（禁用的帐号）、LockedAccountException（锁定的帐号）、UnknownAccountException（错误的帐号）、ExcessiveAttemptsException（登录失败次数过多）、IncorrectCredentialsException （错误的凭证）、ExpiredCredentialsException（过期的凭证）等，具体请查看其继承关系；对于页面的错误消息展示，最好使用如“用户名/密码错误”而不是“用户名错误”/“密码错误”，防止一些恶意用户非法扫描帐号库；
+
+身份认证的流程：
+
+![](http://dl2.iteye.com/upload/attachment/0094/0173/8d639160-cd3e-3b9c-8dd6-c7f9221827a5.png)
+
+流程如下：
+
+1. 首先调用Subject.login(token)进行登录，其会自动委托给Security Manager，调用之前必须通过SecurityUtils. setSecurityManager()设置；
+2. SecurityManager负责真正的身份验证逻辑；它会委托给Authenticator进行身份验证；
+3. Authenticator才是真正的身份验证者，Shiro API中核心的身份认证入口点，此处可以自定义插入自己的实现；
+4. Authenticator可能会委托给相应的AuthenticationStrategy进行多Realm身份验证，默认ModularRealmAuthenticator会调用AuthenticationStrategy进行多Realm身份验证；
+5. Authenticator会把相应的token传入Realm，从Realm获取身份验证信息，如果没有返回/抛出异常表示身份验证失败了。此处可以配置多个Realm，将按照相应的顺序及策略进行访问。
 
