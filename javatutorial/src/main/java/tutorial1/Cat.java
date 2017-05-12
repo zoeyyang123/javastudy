@@ -4,6 +4,10 @@ package tutorial1;
  * Created by zhaoyi on 17-5-12.
  */
 public class Cat extends Animal {
+    Cat(String name, int age) {
+        super(name, age);
+    }
+
     @Override
     public void say() {
         System.out.println("我是一个嘟嘟！");
