@@ -4,7 +4,7 @@ package tutorial1;
  * Created by zhaoyi on 17-5-12.
  */
 public class Cat extends Animal {
-    Cat(String name, int age) {
+    public Cat(String name, int age) {
         super(name, age);
     }
 
