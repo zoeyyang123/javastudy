@@ -4,6 +4,7 @@ import com.spider.news.ds.NewsService;
 import com.spider.news.entity.NewsBasic;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.io.File;
 import java.util.*;
 
 /**
@@ -36,6 +37,18 @@ public class Spider extends TimerTask{
             }
 
         } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+
+        String filePath =  Thread.currentThread().getContextClassLoader().getResource("news.py").getPath();
+
+        try {
+            System.out.println("start");
+            Process pr = Runtime.getRuntime().exec("python "+filePath);
+            pr.waitFor();
+            System.out.println("end");
+        }catch (Exception e) {
             // TODO: handle exception
             e.printStackTrace();
         }

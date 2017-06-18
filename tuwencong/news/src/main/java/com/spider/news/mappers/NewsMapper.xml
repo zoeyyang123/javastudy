@@ -4,16 +4,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spider.news.dao.NewsDao">
 	<select id="acquireNews_Bigdata" parameterType="Integer" resultType="NewsBasic">
-		select * from news_bigdata where id = #{n}
+		select * from news_bigdata limit #{n},1
 	</select>
 	<select id="acquireNews_Ai" parameterType="Integer" resultType="NewsBasic">
-		select * from news_ai where id = #{n}
+		select * from news_ai limit #{n},1
 	</select>
 	<select id="acquireNews_Other" parameterType="Integer" resultType="NewsBasic">
-		select * from news_other where id = #{n}
+		select * from news_other limit #{n},1
 	</select>
 	<select id="acquireNews_Blockchain" parameterType="Integer" resultType="NewsBasic">
-		select * from news_blockchain where id = #{n}
+		select * from news_blockchain limit #{n},1
 	</select>
 	<insert id="createNews" parameterType="NewsBasic" >
 		INSERT INTO news_bigdata(title, content, date, url, source) values(#{title}, #{content}, #{date}, #{url}, #{source})
