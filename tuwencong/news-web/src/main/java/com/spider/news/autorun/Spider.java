@@ -2,9 +2,11 @@ package com.spider.news.autorun;
 
 import com.spider.news.ds.NewsService;
 import com.spider.news.entity.NewsBasic;
+
+import org.python.jline.internal.InputStreamReader;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.io.File;
+import java.io.BufferedReader;
 import java.util.*;
 
 /**
@@ -22,6 +24,27 @@ public class Spider extends TimerTask{
     public static HashMap allNews = new HashMap();
     @Override
     public void run() {
+
+        try {
+            String filePath =  Thread.currentThread().getContextClassLoader().getResource("news.py").getPath();
+            System.out.println("start");
+            Process pr = Runtime.getRuntime().exec("python "+filePath);
+            InputStreamReader x = new InputStreamReader(pr.getInputStream());
+
+            BufferedReader in = new BufferedReader(new InputStreamReader(pr.getInputStream()));
+            String line;
+            while ((line = in.readLine()) != null) {
+                System.out.println(line);
+            }
+            in.close();
+
+            pr.waitFor();
+            System.out.println("end");
+        }catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+
         // TODO Auto-generated method stub
         try {
             System.out.println(new Date());//定时打印当前时间
@@ -37,18 +60,6 @@ public class Spider extends TimerTask{
             }
 
         } catch (Exception e) {
-            // TODO: handle exception
-            e.printStackTrace();
-        }
-
-        String filePath =  Thread.currentThread().getContextClassLoader().getResource("news.py").getPath();
-
-        try {
-            System.out.println("start");
-            Process pr = Runtime.getRuntime().exec("python "+filePath);
-            pr.waitFor();
-            System.out.println("end");
-        }catch (Exception e) {
             // TODO: handle exception
             e.printStackTrace();
         }

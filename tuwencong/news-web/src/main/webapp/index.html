@@ -3,9 +3,9 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>登录界面</title>
+    <title>新闻列表</title>
     <script type="text/javascript">
-        function login(){
+        function list(){
             var xmlHttp;
             if(window.XMLHttpRequest){
                 xmlHttp=new XMLHttpRequest();
@@ -13,7 +13,7 @@
                 xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
             }
 
-            xmlHttp.open("get", "/spider/news/search/news_bigdata", false);
+            xmlHttp.open("get", "/spider/news/list", false);
             xmlHttp.setRequestHeader("Content-Type","application/json");
             var login_jason = {};
             login_jason.userName = "username";
@@ -47,17 +47,12 @@
             document.getElementById("news_ai3").innerHTML = newsTitle.news_ai3;
             document.getElementById("news_ai4").innerHTML = newsTitle.news_ai4;
 
-            /*var newsBasic = JSON.parse(receiveJson);
-             if(newsBasic.newsBigdata!=null){
-             alert(receiveJson);
-             }else {
-             alert(receiveJson);
-             }*/
+
         }
     </script>
 </head>
 
-<body onload="login()">
+<body onload="list()">
 <style>
     body{ text-align:center}
     #divcss5{margin:0 auto;width:1200px;height:100px}

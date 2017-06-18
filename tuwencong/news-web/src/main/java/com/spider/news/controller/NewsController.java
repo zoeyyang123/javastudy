@@ -18,11 +18,11 @@ public class NewsController {
 
 
 	@GET
-	@Path("/search/{newsType}")
+	@Path("/list")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response login(@PathParam("newsType")  String newsType){
-		System.out.println(newsType);
+	public Response list(){
+
 		Map<String,Object> response = Maps.newHashMap();
 
 		for (int i = 0; i < 5 ; i++) {
@@ -32,6 +32,23 @@ public class NewsController {
 			response.put("news_other"+i,((NewsBasic)allNews.get("news_other"+i)).getTitle());
 			response.put("news_blockchain"+i,((NewsBasic)allNews.get("news_blockchain"+i)).getTitle());
 		}
+
+		return Response.status(Response.Status.OK).entity(response).build();
+	}
+
+	@POST
+	@Path("/search/{newsType}/{num}")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response login(@PathParam("newsType")  String newsType,@PathParam("num")  int num){
+		System.out.println(newsType);
+		Map<String,Object> response = Maps.newHashMap();
+
+		NewsBasic news = (NewsBasic)allNews.get(newsType+num);
+		/*response.put("url",news.getUrl());*/
+		/*response.put("title",news.getTitle());*/
+		/*response.put("source",news.getSource());*/
+		response.put("content",news.getContent());
 
 		return Response.status(Response.Status.OK).entity(response).build();
 	}
