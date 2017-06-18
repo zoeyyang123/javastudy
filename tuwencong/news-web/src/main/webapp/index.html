@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>登录界面</title>
+    <script type="text/javascript">
+        function login(){
+            var xmlHttp;
+            if(window.XMLHttpRequest){
+                xmlHttp=new XMLHttpRequest();
+            }else{
+                xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+            }
+
+            xmlHttp.open("get", "/spider/news/search/news_bigdata", false);
+            xmlHttp.setRequestHeader("Content-Type","application/json");
+            var login_jason = {};
+            login_jason.userName = "username";
+            login_jason.passWord = "password";
+            var jsonStr = JSON.stringify(login_jason);
+            xmlHttp.send(jsonStr);
+            var receiveJson = xmlHttp.response;
+            var newsTitle = JSON.parse(receiveJson);
+            //alert(receiveJson);
+            document.getElementById("news_other0").innerHTML = newsTitle.news_other0;
+            document.getElementById("news_other1").innerHTML = newsTitle.news_other1;
+            document.getElementById("news_other2").innerHTML = newsTitle.news_other2;
+            document.getElementById("news_other3").innerHTML = newsTitle.news_other3;
+            document.getElementById("news_other4").innerHTML = newsTitle.news_other4;
+
+            document.getElementById("news_blockchain0").innerHTML = newsTitle.news_blockchain0;
+            document.getElementById("news_blockchain1").innerHTML = newsTitle.news_blockchain1;
+            document.getElementById("news_blockchain2").innerHTML = newsTitle.news_blockchain2;
+            document.getElementById("news_blockchain3").innerHTML = newsTitle.news_blockchain3;
+            document.getElementById("news_blockchain4").innerHTML = newsTitle.news_blockchain4;
+
+            document.getElementById("news_bigdata0").innerHTML = newsTitle.news_bigdata0;
+            document.getElementById("news_bigdata1").innerHTML = newsTitle.news_bigdata1;
+            document.getElementById("news_bigdata2").innerHTML = newsTitle.news_bigdata2;
+            document.getElementById("news_bigdata3").innerHTML = newsTitle.news_bigdata3;
+            document.getElementById("news_bigdata4").innerHTML = newsTitle.news_bigdata4;
+
+            document.getElementById("news_ai0").innerHTML = newsTitle.news_ai0;
+            document.getElementById("news_ai1").innerHTML = newsTitle.news_ai1;
+            document.getElementById("news_ai2").innerHTML = newsTitle.news_ai2;
+            document.getElementById("news_ai3").innerHTML = newsTitle.news_ai3;
+            document.getElementById("news_ai4").innerHTML = newsTitle.news_ai4;
+
+            /*var newsBasic = JSON.parse(receiveJson);
+             if(newsBasic.newsBigdata!=null){
+             alert(receiveJson);
+             }else {
+             alert(receiveJson);
+             }*/
+        }
+    </script>
+</head>
+
+<body onload="login()">
+<style>
+    body{ text-align:center}
+    #divcss5{margin:0 auto;width:1200px;height:100px}
+</style>
+<div id="divcss5">
+    <h2>金融科技新闻</h2>
+
+    <a href=News_Other0.html><div id="news_other0"></div></a>
+    <a href=News_Other1.html><div id="news_other1"></div></a>
+    <a href=News_Other2.html><div id="news_other2"></div></a>
+    <a href=News_Other3.html><div id="news_other3"></div></a>
+    <a href=News_Other4.html><div id="news_other4"></div></a>
+    <br>
+
+    <h2>区块链新闻</h2>
+
+    <a href=News_Blockchain0.html><div id="news_blockchain0"></div></a>
+    <a href=News_Blockchain1.html><div id="news_blockchain1"></div></a>
+    <a href=News_Blockchain2.html><div id="news_blockchain2"></div></a>
+    <a href=News_Blockchain3.html><div id="news_blockchain3"></div></a>
+    <a href=News_Blockchain4.html><div id="news_blockchain4"></div></a>
+    <br>
+
+    <h2>大数据新闻</h2>
+
+    <a href=News_Bigdata0.html><div id="news_bigdata0"></div></a>
+    <a href=News_Bigdata1.html><div id="news_bigdata1"></div></a>
+    <a href=News_Bigdata2.html><div id="news_bigdata2"></div></a>
+    <a href=News_Bigdata3.html><div id="news_bigdata3"></div></a>
+    <a href=News_Bigdata4.html><div id="news_bigdata4"></div></a>
+    <br>
+
+    <h2>人工智能新闻</h2>
+
+    <a href=News_AI0.html><div id="news_ai0"></div></a>
+    <a href=News_AI1.html><div id="news_ai1"></div></a>
+    <a href=News_AI2.html><div id="news_ai2"></div></a>
+    <a href=News_AI3.html><div id="news_ai3"></div></a>
+    <a href=News_AI4.html><div id="news_ai4"></div></a>
+    <br>
+
+</div>
+</body>
+</html>
