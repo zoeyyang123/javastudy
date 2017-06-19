@@ -1,9 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<h2>听起来很人工智能的Fintech到底智能在哪？</h2>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="common.css">
+    <script type="text/javascript">
+        function list(){
+            var xmlHttp;
+            if(window.XMLHttpRequest){
+                xmlHttp=new XMLHttpRequest();
+            }else{
+                xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+            }
+
+            xmlHttp.open("post", "/spider/news/search/news_ai/0", false);
+            xmlHttp.setRequestHeader("Content-Type","application/json");
+            xmlHttp.send();
+            console.log(xmlHttp)
+            console.log(xmlHttp.responseText)
+
+            var newsTitle = JSON.parse(xmlHttp.responseText);
+            console.log(newsTitle);
+            //alert(receiveJson);
+            //document.getElementById("titleName").innerHTML = newsTitle.title;
+            document.getElementById("title").innerHTML = newsTitle.title;
+            document.getElementById("content").innerHTML = newsTitle.content;
+
+
+
+        }
+    </script>
 </head>
-<body>
-<p>　　P2P平台大批跑路后，不少幸存者为了避嫌开始改名，管自己叫“Fintech平台”，首先我们要知道，不是能在网上买点理财产品就可以叫“Fintech”，能称得上金融科技的，好歹得有一点点科技含量吧？<br>　　在人工智能概念火了之后，Fintech又被带了一波节奏，其实Fintech+AI是个有着清晰前景的命题，只是现在市面上出现了太多假Fintech结合假AI的产品。<br>　　Fintech最喜欢吹嘘的往往是自己的风控系统：传统金融做风控要业务员实地考察、要客户三番五次提供一大堆资产收入证明，现在有了人工智能，我们只需要动动手指就能完成这一切。<br>　　实际上帮他们做到这些的不是人工智能，而是征信系统，比如芝麻分什么。在这个时代，还有谁能不在网上留下点痕迹呢，数据够大了，很多事就能做到了。<br>　　大数据是怎么帮Fintech做到风控的呢？简单举几个例子，在授信环节，在用户授权的前提下，用爬虫可以抓取用户的信用卡还贷数据、电商交易数据、各种O2O消费数据……甚至可以在学信网上看到你上哪个学校。如果你是小微创业者，还可以看到你的交易数据和所有的企业注册信息。而这些往往是征信机构做的，和Fintech平台无关。<br>　　征信机构通过用户数据的采集、共享、分析做到了这一切，要说有多么智能，恐怕有些牵强了。<br>　　真智能的Fintech不仅仅是风控<br>　　那么Fintech+AI到底能做到什么呢，显然不仅仅是风控，但我们可以先从风控说起。<br>　　比如在风控上，虽然征信机构可以构建出几乎完美的风控模型，但在消费金融领域，中国有65%的人没有被征信记录覆盖，面对这些人离散在互联网各处的复杂数据，AI是如何帮助Fintech进行授信的？<br>　　目前比较流行的方式是知识图谱，知识图谱是人工智能大概念下的子集之一，其价值在于理解数据的内在含义，把以往的“名词搜索”变成语义搜索，从而在离散的数据间建立联系。<br>　　应用到金融中，知识图谱可以把个人信息和履约记录、社交媒体数据等等联系起来。举个例子，如果我们仅仅拥有客户的姓名和联系方式却没有授信记录，我们可以通过他的通话记录发现他所联系的其他用户授信记录如何，从而进行风险评级。<br>　　当然，这只是知识图谱在Fintech方面最简单的应用。知识图谱还能做更多的事，比如不看财报而是通过社交媒体新闻分析某只股票的股价走势等等。总之，在个体数据匮乏的情况下，知识图谱可以利用其它可获得的数据，通过“联想”完成很多分析工作。如果建立的足够完善，知识图谱几乎可以成为一个应对无数维度的征信系统。<br>　　分析师：你学我！<br>　　除了知识图谱，深度学习和NLP在Fintech中的应用也很普遍。比如通过深度学习中的回归分析来模仿分析师的交易行为，从而推导出相关交易策略的算法模型来辅助人为操作。<br>　　而为了优化处理效果，一些机构开始试图在算法中引入非结构数据——新闻、分析报告、社交媒体舆情等等。通过NLP技术对其进行分析处理，增强算法在演算时的逻辑性。<br>　　最后这些算法就可以像入行多年的金融老司机一样，通过内部数据和外部环境影响做出决策。<br>　　伦敦、香港、日本等等地区都有团队在从事相关的研究，其中著名的有投资机器人Kensho，这家专注于量化投资的技术企业通过NLP、图像识别和云计算等等技术，可以快速处理投资关联业务。<br>　　面对类似于美国大选一类的黑天鹅事件，分析师们只能从自己短暂的从业经历中总结方法，Kensho却可以通过总结历史上所有类似事件产生的影响而给出答案。<br>　　经验、直觉这些原本在金融行业不可替代的特质正在被AI通过深度学习快速复制，华尔街的魔法正在慢慢褪去。<br>　　大多数Fintech只有人工，没智能<br>　　风控、量化分析这些金融产业中较为重要的环节正在被AI入侵，一些本身就技术含量不高的环节更是不能幸免。最简单的，像是招股书、报告等等文件的撰写，通过自然语言理解和自然语言生产就可以处理。在信贷审批中生物识别（指纹、虹膜）和设备指纹识别（移动设备的唯一编号）也在替代着传统的流程模式。<br>　　但说到底，真正能运用上人工智能的Fintech企业基本都有着强大的“靠山”。前文提到的Kensho已经被高盛收购，对冲基金桥水联合也早已招兵买马试水AI，在国内，蚂蚁金服也是托身与阿里巴巴的。<br>　　原因其实很简单，金融业务基础的自动化无处不在，可想要代替人类更好的完成工作，必须依赖强大的数据好计算能力构建AI，并拥有足够好的人力资源对其进行监督和优化。所以，大部分金融从业者还不是很担心自己的饭碗。<br>　　看到这里我们就应该明白，真的Fintech，是那些小平台根本玩不起的。大部分所谓的Fintech，能做到通大数据完善风控模型就已经很不错了。至于一些平台提到的，根据大数据为客户智能推荐适合的产品，降低违约概率，或许结果是好的，但基本上都是大数据+人为判断的结果。<br>　　“大数据+人=X”根本不是智能，“大数据-人=X”才是智能。<br>责任编辑：方杰<br></p>
-<p><a href=menu.html>首页</a></p>
+
+<body onload="list()">
+
+<div id="title"></div>
+<br>
+<div id="content"></div>
+<br>
+<p><a href=index.html>首页</a></p>
+
 </body>
 </html>

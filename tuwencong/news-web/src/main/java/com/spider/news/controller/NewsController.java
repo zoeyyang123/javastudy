@@ -45,9 +45,9 @@ public class NewsController {
 		Map<String,Object> response = Maps.newHashMap();
 
 		NewsBasic news = (NewsBasic)allNews.get(newsType+num);
-		/*response.put("url",news.getUrl());*/
-		/*response.put("title",news.getTitle());*/
-		/*response.put("source",news.getSource());*/
+		response.put("url",news.getUrl());
+		response.put("title",news.getTitle());
+		response.put("source",news.getSource());
 		response.put("content",news.getContent());
 
 		return Response.status(Response.Status.OK).entity(response).build();

@@ -1,11 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 
-        <html>
-        <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <h2>银行业拥抱人工智能 助力行业变革降本提质</h2>
-        </head>
-        <body>
-        <p>　　阿陈从小就是其他父母口中“别人家的孩子”,大学毕业后,来到帝都找了一份工作,顺理成章的成为了老板眼中不可多得的人才。两年后,他被冠上了“别人家的男朋友”以及“别人家的老公”的称号。顺风顺水,可阿陈觉得没有了前进的动力。看着办公桌上比自己都高出半头的方案,听着甲方不找边际的无理取闹,阿陈觉得好没劲。<br>　　一个月后,阿陈递交了辞呈,和几个朋友准备合伙开公司。<br>　　但毕竟,公司不是动动嘴就能开张的,阿陈和合伙人面临着一个共同的难题——资金不足。好哥们商量一番后决定去银行贷款。<br>　　行动派办事一向利落,第二天下午阿陈就出现在一家银行。还好,人不多,阿陈取了号坐在一旁的座椅上等着,前面有4个人。<br>　　过了半个小时,前面还有4个人。<br>　　又过了20分钟,前面还有3个人<br>　　这期间,阿陈还看到一位用户因为手续办理错误和工作人员一顿大吵。<br>　　一向处事不惊的阿陈,此刻想爆粗口。<br>　　过了三个小时,阿陈面无表情的从银行走出来,还没轮到他银行竟然下班了......<br>　　心塞……在银行办理业务竟然这么慢?<br>　　银行的座椅总是不够的,经常可以看到排着大长队的情形,往往办理一个业务,半天的时间就过去了,耗时长不说,且用户信息录入错误、真假难辨更是常有的事情,头疼的不止是阿陈一个,只能感叹幸亏自己不会经常来银行。<br>　　好在如今有了新的渠道——在移动互联网快速发展以及政府政策支持新形势下,传统银行网点逐渐向移动智慧网点方向转型,远程自助开户业务被各大银行相继接入,还不懂?好吧,简单来说,就是手机银行。把银行装进手机,用户可以不受时间和地域限制,轻松办理银行业务。<br>　　但手机银行同时也面临着一个很严峻的问题——风控安全,如何降低风控成本和提升客户注册成功率,以及精准识别借款人的真实身份、防范欺诈行为成为银行自助开户需解决的首要问题。对此,易道博识针对手机银行的特点打造了一套智能解决方案,集身份证识别、活体检测、人像验证及银行卡识别于一体,让用户在短时间内通过手机完成业务办理, 
-高效快速,最大化优化体验效果,且多方位把控身份验证,有效防止银行业客户风险不一、客户信用信息不全、恶意欺诈等风险,确保银行业务安全。<br>　　人工智能这几年飞速发展,在各个领域的渗透效果立竿见影。人工智能的加入也从根本上改变了银行的发展模式,更多的接近客户,更有效的降低风险。不仅在银行前端业务办理提供便捷的客户体验,在银行后端更是建立起把控风险的反欺诈模式,既安全又便捷,你还想去银行排长队吗?<br>责任编辑：王薏群<br></p>
-        <p><a href=menu.html>首页</a></p>
-        </body>
-        </html>
+<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title></title>
+        <link rel="stylesheet" href="common.css">
+        <script type="text/javascript">
+            function list(){
+                var xmlHttp;
+                if(window.XMLHttpRequest){
+                    xmlHttp=new XMLHttpRequest();
+                }else{
+                    xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+                }
+
+                xmlHttp.open("post", "/spider/news/search/news_ai/1", false);
+                xmlHttp.setRequestHeader("Content-Type","application/json");
+                xmlHttp.send();
+                console.log(xmlHttp)
+                console.log(xmlHttp.responseText)
+
+                var newsTitle = JSON.parse(xmlHttp.responseText);
+                console.log(newsTitle);
+                //alert(receiveJson);
+                //document.getElementById("titleName").innerHTML = newsTitle.title;
+                document.getElementById("title").innerHTML = newsTitle.title;
+                document.getElementById("content").innerHTML = newsTitle.content;
+
+
+
+            }
+        </script>
+</head>
+
+<body onload="list()">
+
+<div id="title"></div>
+<br>
+<div id="content"></div>
+<br>
+<p><a href=index.html>首页</a></p>
+
+</body>
+</html>

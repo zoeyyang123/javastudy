@@ -52,7 +52,7 @@ public class Spider extends TimerTask{
             List<NewsBasic> aiNews= newsService.acquireNews("news_ai",5);
             List<NewsBasic> blockChainNews= newsService.acquireNews("news_blockchain",5);
             List<NewsBasic> otherNews= newsService.acquireNews("news_other",5);
-            for (int i = 0; i <bigDataNews.size() ; i++) {
+            for (int i = 0; i < 5 ; i++) {
                 allNews.put("news_bigdata"+i,bigDataNews.get(i));
                 allNews.put("news_ai"+i,aiNews.get(i));
                 allNews.put("news_blockchain"+i,blockChainNews.get(i));

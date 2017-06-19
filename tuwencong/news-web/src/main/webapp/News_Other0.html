@@ -3,7 +3,8 @@
 
 <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title><div id="titleName"></div></title>
+        <title></title>
+        <link rel="stylesheet" href="common.css">
         <script type="text/javascript">
             function list(){
                 var xmlHttp;
@@ -16,13 +17,14 @@
                 xmlHttp.open("post", "/spider/news/search/news_other/0", false);
                 xmlHttp.setRequestHeader("Content-Type","application/json");
                 xmlHttp.send();
+                console.log(xmlHttp)
+                console.log(xmlHttp.responseText)
 
-
-                var receiveJson = xmlHttp.responseText;
-                var newsTitle = JSON.parse(receiveJson);
+                var newsTitle = JSON.parse(xmlHttp.responseText);
+                console.log(newsTitle);
                 //alert(receiveJson);
-                /*document.getElementById("titleName").innerHTML = newsTitle.title;
-                document.getElementById("title").innerHTML = newsTitle.title;*/
+                //document.getElementById("titleName").innerHTML = newsTitle.title;
+                document.getElementById("title").innerHTML = newsTitle.title;
                 document.getElementById("content").innerHTML = newsTitle.content;
 
 
@@ -33,7 +35,7 @@
 
 <body onload="list()">
 
-        <h2><div id="title"></div></h2>
+        <div id="title"></div>
         <br>
         <div id="content"></div>
         <br>

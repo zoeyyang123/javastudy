@@ -1,10 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 
-        <html>
-        <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <h2>大数据引发网络安全风险 行业或将步入严管期</h2>
-        </head>
-        <body>
-        <p>　　随着大数据蓬勃发展，数据贩卖、泄露等威胁个人信息安全的负面事件不断涌现，强化监管力度已到了必要且紧迫的时刻。可以预见，未来大数据行业也将进入严管期，或将引发行业洗牌。<br>　　近两年，互联网金融，尤其是网贷、消费金融领域的迅猛发展带动了大数据行业的发展。根据中国信息通信研究院发布的《中国大数据发展调查报告(2017)》显示，2016年中国大数据市场规模达168亿元，预计2017年-2020年仍将保持年均30%以上的增长。<br>　　但随着大数据蓬勃发展，数据贩卖、泄露等威胁个人信息安全的负面事件不断涌现。6月1日，顺丰和菜鸟陷入数据大战，在数据资源方面互不让步，以保护用户数据隐私安全的名义掐架，数据资源争夺愈演愈烈，强化市场监管已到了必要且紧迫的时刻。<br>　　近日，监管出手清查大数据公司，给业界敲响了警钟。有业内人士透露，深圳和杭州市已经开始清查大数据公司。相关人士表示，行业规范已经悄然开始，越来越多涉及用户数据隐私的案件发生，即便只是一批大数据公司被“协助了解情况”，给行业带来的震撼不可估量。此举重点打击市场上贩卖数据的机构，未来大数据行业也将进入严管期，或将引发行业洗牌。<br>　　的确，近两年网络安全问题越来越受到政府以及公众的关注，为此相关部门也采取了一系列举措。今年5月31日，中国人民银行征信管理局局长万存知撰文《个人信息保护与个人征信监管》表示，个人信息在征信中的使用方式可以概括为四个字——“有限使用”。“有限”的标准就是，特定用途特定授权，没有授权原则上就不能使用。从国内外经验来看，个人征信信息一般用于信用交易领域(即放贷活动及贷后管理)，不宜在其他领域广泛交叉使用，否则容易导致侵害个人信息隐私权益的法律风险。<br>　　6月1日，《网络安全法》正式实施，也预示着行业规范正式拉开序幕。在保护个人信息方面，明确网络运营者收集和使用个人信息应当遵循合法、正当、必要的原则，且要目的明确并经用户知情同意;还规定了任何个人和组织不得窃取或者以其他非法方式获取个人信息，不得非法出售或者非法向他人提供个人信息。<br>　　“监管介入规范大数据行业，利于行业的健康发展，”某数据公司科技部门相关人士表示，但是行业中仍有很多法律政策并未明晰的“灰色地带”，比如国家对于数据爬取的范围界定并不明确，一个公开的网站的数据到底允许不允许被爬取并没有明确规定，但行业要有职业道德底线。<br>　　正如上述所言，目前我国关于大数据隐私保护的法律还很缺乏。北京市信息资源管理中心总工程师穆勇曾经表示，大数据在信息保护方面有三个层面，分别为国家秘密、商业秘密和个人隐私，国家秘密方面相关的法律法规很健全，而个人隐私方面的规定则比较薄弱。<br>　　国家发改委城市中心交通规划院院长张国华则表示，大数据市场目前还处于探索期，远远没有成熟，所以需要开放、包容地来看待，多给它一些试错的机会。<br>责任编辑：韩希宇<br></p>
-        <p><a href=menu.html>首页</a></p>
-        </body>
-        </html>
+<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title></title>
+        <link rel="stylesheet" href="common.css">
+        <script type="text/javascript">
+            function list(){
+                var xmlHttp;
+                if(window.XMLHttpRequest){
+                    xmlHttp=new XMLHttpRequest();
+                }else{
+                    xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+                }
+
+                xmlHttp.open("post", "/spider/news/search/news_bigdata/2", false);
+                xmlHttp.setRequestHeader("Content-Type","application/json");
+                xmlHttp.send();
+                console.log(xmlHttp)
+                console.log(xmlHttp.responseText)
+
+                var newsTitle = JSON.parse(xmlHttp.responseText);
+                console.log(newsTitle);
+                //alert(receiveJson);
+                //document.getElementById("titleName").innerHTML = newsTitle.title;
+                document.getElementById("title").innerHTML = newsTitle.title;
+                document.getElementById("content").innerHTML = newsTitle.content;
+
+
+
+            }
+        </script>
+</head>
+
+<body onload="list()">
+
+<div id="title"></div>
+<br>
+<div id="content"></div>
+<br>
+<p><a href=index.html>首页</a></p>
+
+</body>
+</html>
