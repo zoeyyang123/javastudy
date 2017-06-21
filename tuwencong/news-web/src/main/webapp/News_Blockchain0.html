@@ -3,7 +3,7 @@
 
 <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title></title>
+
         <link rel="stylesheet" href="common.css">
         <script type="text/javascript">
             function list(){
@@ -24,6 +24,12 @@
                 console.log(newsTitle);
                 //alert(receiveJson);
                 //document.getElementById("titleName").innerHTML = newsTitle.title;
+
+                var x = document.createElement("title");
+                var t = document.createTextNode(newsTitle.title);
+                x.appendChild(t);
+                document.head.appendChild(x);
+
                 document.getElementById("title").innerHTML = newsTitle.title;
                 document.getElementById("content").innerHTML = newsTitle.content;
 
