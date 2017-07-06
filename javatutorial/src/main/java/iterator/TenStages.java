@@ -1,4 +1,4 @@
-package tenStages;
+package iterator;
 
 /**
  * Created by zhaoyi on 17-7-3.

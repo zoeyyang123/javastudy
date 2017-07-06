@@ -1,4 +1,4 @@
-package longToString;
+package strings;
 
 /**
  * Created by zhaoyi on 17-6-14.

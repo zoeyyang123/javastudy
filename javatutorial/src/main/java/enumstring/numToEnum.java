@@ -1,4 +1,4 @@
-package enumAndString;
+package enumstring;
 
 /**
  * Created by zhaoyi on 17-6-15.

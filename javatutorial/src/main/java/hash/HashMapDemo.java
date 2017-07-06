@@ -1,4 +1,4 @@
-package hashMap;
+package hash;
 
 /**
  * Created by zhaoyi on 17-6-8.
