@@ -6,7 +6,7 @@ package leetcode.easy;
 public class ImplementstrStr {
     public static int strStr(String haystack, String needle) {
         //return haystack.indexOf(needle);
-        //直接调用90.96%
+        //直接调用90.96%,偶尔也会掉到69%
         int haystackSize = haystack.length();
         int needleSize = needle.length();
         if (needleSize==0) return 0;
