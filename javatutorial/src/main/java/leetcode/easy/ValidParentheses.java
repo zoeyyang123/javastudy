@@ -30,15 +30,24 @@ public class ValidParentheses {
                     buffer.push(temp);
                     break;
                 case ')':
-                    if (!buffer.pop().equals('('))
+                    if (!buffer.empty()){
+                        if (!buffer.pop().equals('('))
+                            return false;
+                    }else
                         return false;
                     break;
                 case ']':
-                    if (!buffer.pop().equals('['))
+                    if (!buffer.empty()){
+                        if (!buffer.pop().equals('('))
+                            return false;
+                    }else
                         return false;
                     break;
                 case '}':
-                    if (!buffer.pop().equals('{'))
+                    if (!buffer.empty()){
+                        if (!buffer.pop().equals('('))
+                            return false;
+                    }else
                         return false;
                     break;
                 default:
@@ -54,6 +63,7 @@ public class ValidParentheses {
         String s2 = "";
         String s3 = "((((({[)()}}";
         String s4 = "}[";
-        System.out.println(isValid(s3));
+        String s5 = "()]}";
+        System.out.println(isValid(s5));
     }
 }
