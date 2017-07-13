@@ -32,6 +32,7 @@ public class ClimbingStairs {
             return result[n-1];
         }
     }
+    //循环多次尽量不用递归
 
     public static void main(String[] args) {
         System.out.println(climbStairs(45));
