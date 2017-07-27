@@ -191,7 +191,7 @@ if __name__ == '__main__':
     News_Dashuju_CN = '大数据'   
     
     News_Rengongzhineng = 'News_AI'
-    News_Rengongzhineng_CN = '人工智能'   
+    News_Rengongzhineng_CN = '智能'
     
     News_Qukuailian = 'News_Blockchain'
     News_Qukuailian_CN = '区块链'   
