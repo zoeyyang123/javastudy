@@ -7,6 +7,8 @@ import javax.ws.rs.core.Response;
 import com.google.common.collect.Maps;
 import com.spider.news.entity.NewsBasic;
 import org.springframework.stereotype.Component;
+
+import java.text.SimpleDateFormat;
 import java.util.Map;
 import static com.spider.news.autorun.Spider.allNews;
 
@@ -49,6 +51,10 @@ public class NewsController {
 		response.put("title",news.getTitle());
 		response.put("source",news.getSource());
 		response.put("content",news.getContent());
+
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		String date = sdf.format(news.getDate());
+		response.put("date",date);
 
 		return Response.status(Response.Status.OK).entity(response).build();
 	}
